@@ -1,0 +1,112 @@
+/*
+ * Landing-page layout. The gradient is confined to the hero wash + wordmark
+ * and the gradient-tinted keywords; the rest stays calm.
+ */
+
+/* Hero -------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  padding: 120px 0 96px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Subtle iridescent wash behind the hero — the one structural gradient
+   moment, kept low-opacity so the page reads dark. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -40% 0 auto 0;
+  height: 480px;
+  background: var(--iris);
+  opacity: 0.14;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero > .container {
+  position: relative;
+}
+
+.hero__wordmark {
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0;
+  line-height: 1;
+}
+
+.hero__subline {
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin: 20px 0 36px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* What it is -------------------------------------------------------------- */
+.what-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  max-width: 70ch;
+}
+
+.what-list li {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.what-list__lead {
+  font-weight: 700;
+}
+
+/* Commands ---------------------------------------------------------------- */
+.cmd-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.cmd-group__title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.cmd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.cmd {
+  display: grid;
+  gap: 4px;
+}
+
+.cmd__name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.cmd__args {
+  color: var(--muted);
+}
+
+.cmd__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+}

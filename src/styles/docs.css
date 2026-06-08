@@ -1,0 +1,201 @@
+/*
+ * Docs portal: thin left sidebar + a comfortable prose column. Markdown is
+ * rendered by react-markdown; the .doc rules below style its raw output.
+ */
+
+.docs {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  padding: 48px 24px 80px;
+  align-items: start;
+}
+
+/* Sidebar ----------------------------------------------------------------- */
+.docs__sidebar {
+  position: sticky;
+  top: 84px;
+}
+
+.docs__nav {
+  display: grid;
+  gap: 2px;
+}
+
+.docs__navlink {
+  display: block;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.92rem;
+  border-left: 2px solid transparent;
+}
+
+.docs__navlink:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.docs__navlink.active {
+  color: var(--text);
+  border-left-color: var(--violet);
+}
+
+/* Prose ------------------------------------------------------------------- */
+.docs__main {
+  min-width: 0;
+}
+
+.doc {
+  max-width: 70ch;
+}
+
+.doc__lead {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.doc__sync {
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  margin: 0 0 28px;
+}
+
+.doc h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.doc h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 40px 0 14px;
+  padding-top: 8px;
+}
+
+.doc h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 28px 0 10px;
+}
+
+.doc p,
+.doc li {
+  line-height: 1.7;
+}
+
+.doc a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.doc code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.doc pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  overflow-x: auto;
+}
+
+.doc pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.doc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.9rem;
+}
+
+.doc th,
+.doc td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc th {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.doc blockquote {
+  border-left: 3px solid var(--violet);
+  margin: 18px 0;
+  padding: 4px 16px;
+  color: var(--muted);
+}
+
+/* Docs index -------------------------------------------------------------- */
+.doc-index {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: grid;
+  gap: 18px;
+}
+
+.doc-index__item {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.doc-index__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.doc-index__blurb {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Narrow screens: sidebar stacks above content. */
+@media (max-width: 720px) {
+  .docs {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .docs__sidebar {
+    position: static;
+  }
+
+  .docs__nav {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    gap: 8px;
+  }
+
+  .docs__navlink.active {
+    border-left: none;
+    border-bottom: 2px solid var(--violet);
+    border-radius: 0;
+  }
+}

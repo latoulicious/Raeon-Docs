@@ -1,0 +1,140 @@
+/*
+ * Shared chrome: nav, footer, buttons, code blocks, generic section spacing.
+ * Tokens come from theme.css. Page-specific layout lives in landing.css /
+ * docs.css. Flat surfaces, thin borders, whitespace does the work.
+ */
+
+/* Nav --------------------------------------------------------------------- */
+.nav {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav__brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.nav__links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav__links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav__links a:hover {
+  color: var(--text);
+}
+
+/* Buttons ----------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--iris);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.btn--ghost {
+  border-color: var(--border);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.btn--ghost:hover {
+  border-color: var(--violet);
+  color: var(--text);
+}
+
+/* Sections ---------------------------------------------------------------- */
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+}
+
+.section__lead {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 24px;
+}
+
+.section__note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+/* Code blocks ------------------------------------------------------------- */
+.codeblock {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Footer ------------------------------------------------------------------ */
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 32px 0;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer__joke {
+  margin-left: auto;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .footer__joke {
+    margin-left: 0;
+  }
+}
