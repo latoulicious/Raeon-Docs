@@ -43,9 +43,10 @@ Origin: planning notes lived in `../Raeon/docs/wiki/landing-page-notes.md`
 
 ## Design system
 
-Minimalist **structure** (borrowed from `../LazyScan/web`) + iridescent
-**color** (Raeon's banner) as the signature. The color is the brand; the
-layout is the quiet canvas.
+Minimalist **structure** (borrowed from `../LazyScan/web`) on a restrained
+near-black canvas with a **single calm blue accent**. Color is used
+sparingly — restraint and whitespace carry it. (An earlier banner-derived
+iridescent palette was tried and dialled back: too colorful in practice.)
 
 Structure rules:
 - Flat surfaces, no shadows, no card-soup. One bg, one raised surface,
@@ -56,23 +57,22 @@ Structure rules:
   modest 6px radii.
 - Restraint in copy — facts, not marketing. Color carries personality.
 
-Palette (banner-inspired, not a 1:1 crop) — see `src/styles/theme.css`:
+Palette (restrained, one accent) — see `src/styles/theme.css`:
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `--bg` | `#0E1116` | page background (near-black blue) |
-| `--surface` | `#171B26` | nav, code blocks, footer |
-| `--border` | `#252B38` | thin 1px lines |
-| `--primary` | `#4263EB` | base accent, links |
-| `--violet` | `#7048E8` | gradient stop, hover, dividers |
-| `--cyan` | `#22D3EE` | gradient stop, highlights |
-| `--peach` | `#F4C99B` | rare warm glint |
-| `--text` | `#E6E9F2` | body |
-| `--muted` | `#98A2B3` | secondary text |
+| `--bg` | `#0D0F14` | page background (near-black) |
+| `--surface` | `#161922` | nav, cards, code blocks, footer |
+| `--border` | `#232733` | thin 1px lines |
+| `--primary` | `#6E8BEF` | calm blue: links, buttons, wordmark |
+| `--primary-deep` | `#5B76D6` | active borders, dividers |
+| `--primary-soft` | `#93A8F5` | hover |
+| `--text` | `#E8EBF2` | body |
+| `--muted` | `#99A2B3` | secondary text |
 
-Signature gradient: `linear-gradient(120deg, primary → violet → cyan)`
-(+ optional peach glint) — hero wash, primary button, wordmark fill, one
-section divider. Confined to hero/structural moments so body stays calm.
+No gradients or hero glow — the wordmark and primary button are solid
+`--primary`. Color stays confined to those few moments so the body reads
+calm.
 
 Voice (from the bot bio — deadpan):
 - Hero subline: "Silent conductor. Pulls bytes, pushes waves."

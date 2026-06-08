@@ -7,7 +7,7 @@ export function Nav() {
   return (
     <header className="nav">
       <div className="container nav__inner">
-        <Link to="/" className="nav__brand gradient-text">
+        <Link to="/" className="nav__brand accent-text">
           {SITE.name}
         </Link>
         <nav className="nav__links">

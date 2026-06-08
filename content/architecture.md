@@ -29,13 +29,21 @@ itself.
 
 ## Audio pipeline
 
-```txt
-/play <url|query>
-  → MusicService.resolve()         Lavalink REST /loadtracks
-  → MusicService.play()            queue-cap check → join voice → enqueue
-  → GuildPlayer.start()            PlayerPort.playTrack(encoded)
-                                   Lavalink decodes + streams opus to Discord
-  → track `end` event              auto-advance to the next queued track
+```mermaid
+flowchart TD
+    play["/play &lt;url | query&gt;"]
+    resolve["MusicService.resolve()<br/>Lavalink REST /loadtracks"]
+    playcmd["MusicService.play()<br/>queue-cap check (20) · join voice · enqueue"]
+    start["GuildPlayer.start()<br/>PlayerPort.playTrack(encoded)"]
+    node["Lavalink node<br/>decodes + streams opus to Discord"]
+    ended{"track end event"}
+    advance["auto-advance to next queued track"]
+    halt["halt — queue intact"]
+
+    play --> resolve --> playcmd --> start --> node --> ended
+    ended -->|"finished / loadFailed"| advance
+    advance --> start
+    ended -->|"stopped (after /stop)"| halt
 ```
 
 The hidden contract is the track-`end` event driving auto-advance:

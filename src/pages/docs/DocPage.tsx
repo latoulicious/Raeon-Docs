@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getDoc } from "../../data/docs";
 import { SITE } from "../../data/site";
+import { Mermaid } from "../../components/Mermaid";
 
 // Keep internal markdown links (`/docs/...`) inside the SPA; let external
 // links open normally in a new tab.
@@ -21,6 +22,27 @@ function MarkdownLink({
     <a href={href} target="_blank" rel="noreferrer">
       {children}
     </a>
+  );
+}
+
+// Render ```mermaid fences as live diagrams; everything else stays a normal
+// code element.
+function MarkdownCode({
+  className,
+  children,
+  ...props
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  const lang = /language-(\w+)/.exec(className ?? "")?.[1];
+  if (lang === "mermaid") {
+    return <Mermaid chart={String(children).trim()} />;
+  }
+  return (
+    <code className={className} {...props}>
+      {children}
+    </code>
   );
 }
 
@@ -45,6 +67,12 @@ export function DocPage() {
 
   return (
     <article className="doc">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{ a: MarkdownLink, code: MarkdownCode }}
+      >
+        {body}
+      </ReactMarkdown>
       {syncedFrom ? (
         <p className="doc__sync">
           Mirrored from <code>{syncedFrom}</code>
@@ -64,9 +92,6 @@ export function DocPage() {
           . The bot wiki is the source of truth.
         </p>
       ) : null}
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ a: MarkdownLink }}>
-        {body}
-      </ReactMarkdown>
     </article>
   );
 }

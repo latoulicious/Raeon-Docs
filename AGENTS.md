@@ -141,9 +141,9 @@ Before non-trivial implementation:
 
 The hidden contracts here are: the `theme.css` token set (the whole site
 draws from it), the docs sync frontmatter contract (`synced_from` /
-`synced_commit` per `content/*.md`), the route table in `src/App.tsx`
-paired with the `vercel.json` rewrite, and the single-source command list
-in `src/data/commands.ts` (mirrored from the bot's 14 builders).
+`synced_commit` per `content/*.md`), and the route table in `src/App.tsx`
+paired with the `vercel.json` rewrite. The command list is mirrored from
+the bot's 14 builders into `content/commands.md`.
 
 ---
 

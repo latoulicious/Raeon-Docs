@@ -38,7 +38,7 @@
 
 .docs__navlink.active {
   color: var(--text);
-  border-left-color: var(--violet);
+  border-left-color: var(--primary-deep);
 }
 
 /* Prose ------------------------------------------------------------------- */
@@ -56,13 +56,12 @@
 }
 
 .doc__sync {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 8px 12px;
-  margin: 0 0 28px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin: 48px 0 0;
+  opacity: 0.75;
 }
 
 .doc h1 {
@@ -120,6 +119,25 @@
   line-height: 1.7;
 }
 
+/* Mermaid diagrams render as an SVG in a <div class="mermaid">; react-markdown
+ * still wraps the fenced block in a <pre>, so strip that frame and center. */
+.doc pre:has(.mermaid) {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.doc .mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.doc .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .doc table {
   width: 100%;
   border-collapse: collapse;
@@ -141,7 +159,7 @@
 }
 
 .doc blockquote {
-  border-left: 3px solid var(--violet);
+  border-left: 3px solid var(--primary-deep);
   margin: 18px 0;
   padding: 4px 16px;
   color: var(--muted);
@@ -195,7 +213,7 @@
 
   .docs__navlink.active {
     border-left: none;
-    border-bottom: 2px solid var(--violet);
+    border-bottom: 2px solid var(--primary-deep);
     border-radius: 0;
   }
 }

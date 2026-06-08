@@ -1,31 +1,28 @@
 /*
  * Raeon Docs — design tokens.
- * Minimalist structure (whitespace, flat surfaces, thin borders, Inter)
- * + banner-derived iridescent palette as the signature. See PLAN.md.
+ * Minimalist structure (whitespace, flat surfaces, thin borders, Inter) on a
+ * restrained near-black base with a single calm blue accent. Color is used
+ * sparingly — restraint and whitespace do the work. See PLAN.md.
  *
  * This file IS the design system; it is real (not a stub) so the palette
- * decision lives in code from W0. Components arrive at W1+.
+ * decision lives in code from W0.
  */
 
 :root {
-  /* Surfaces */
-  --bg: #0e1116; /* near-black blue page background */
-  --surface: #171b26; /* nav, code blocks, footer */
-  --border: #252b38; /* thin 1px lines */
+  /* Surfaces — neutral near-black, faintly cool. */
+  --bg: #0d0f14; /* page background */
+  --surface: #161922; /* nav, cards, code blocks, footer */
+  --border: #232733; /* thin 1px lines */
 
-  /* Accent — banner iridescence */
-  --primary: #4263eb; /* electric banner blue: base accent, links */
-  --violet: #7048e8; /* gradient stop, hover shift, dividers */
-  --cyan: #22d3ee; /* gradient stop, small highlights */
-  --peach: #f4c99b; /* rare warm glint */
+  /* Accent — one calm blue, three shades. Links, buttons, wordmark, active
+     states. No second hue. */
+  --primary: #6e8bef; /* base accent: links, buttons, wordmark */
+  --primary-deep: #5b76d6; /* active borders, dividers */
+  --primary-soft: #93a8f5; /* hover */
 
   /* Text */
-  --text: #e6e9f2;
-  --muted: #98a2b3;
-
-  /* Signature gradient — hero wash, primary button, wordmark fill,
-     one section divider. Keep it to those few moments. */
-  --iris: linear-gradient(120deg, var(--primary), var(--violet), var(--cyan));
+  --text: #e8ebf2; /* off-white body */
+  --muted: #99a2b3; /* secondary text */
 
   /* Layout */
   --content-max: 1120px; /* centered column (LazyScan-style) */
@@ -63,7 +60,7 @@ a {
 }
 
 a:hover {
-  color: var(--violet);
+  color: var(--primary-soft);
 }
 
 /* Centered content column shared by landing + docs. */
@@ -74,10 +71,7 @@ a:hover {
   padding: 0 24px;
 }
 
-/* Gradient text — the wordmark and hero accents draw from --iris. */
-.gradient-text {
-  background: var(--iris);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Accent text — the wordmark and tinted keywords, solid blue. */
+.accent-text {
+  color: var(--primary);
 }

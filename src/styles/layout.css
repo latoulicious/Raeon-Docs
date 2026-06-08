@@ -4,6 +4,21 @@
  * docs.css. Flat surfaces, thin borders, whitespace does the work.
  */
 
+/* Sticky footer ----------------------------------------------------------- */
+/* Every page renders <Nav> + one content region + <Footer> directly under
+ * #root. Make the page a full-height flex column so the content region grows
+ * and the footer always rests at the viewport bottom — even on short pages
+ * like /docs. Keeps the footer consistent across every route. */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#root > :not(.nav):not(.footer) {
+  flex: 1 0 auto;
+}
+
 /* Nav --------------------------------------------------------------------- */
 .nav {
   border-bottom: 1px solid var(--border);
@@ -54,7 +69,7 @@
 }
 
 .btn--primary {
-  background: var(--iris);
+  background: var(--primary);
   color: #fff;
 }
 
@@ -70,14 +85,13 @@
 }
 
 .btn--ghost:hover {
-  border-color: var(--violet);
+  border-color: var(--primary);
   color: var(--text);
 }
 
 /* Sections ---------------------------------------------------------------- */
 .section {
   padding: 72px 0;
-  border-top: 1px solid var(--border);
 }
 
 .section__title {
@@ -116,16 +130,16 @@
 .footer {
   border-top: 1px solid var(--border);
   background: var(--surface);
-  padding: 32px 0;
+  padding: 14px 0;
 }
 
 .footer__inner {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .footer__joke {
